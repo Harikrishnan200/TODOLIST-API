@@ -53,6 +53,7 @@ class LoginView(APIView):
 # 
 # }
 
+# Forgot password
 class ForgotPasswordView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = ForgotPasswordSerializer(data=request.data)
@@ -81,8 +82,7 @@ class ForgotPasswordView(APIView):
             return Response({"message": "Password reset link has been sent to your email address."}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-# views.py
+# Reset password
 class ResetPasswordView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = ResetPasswordSerializer(data=request.data)
